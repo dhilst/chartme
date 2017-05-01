@@ -2,8 +2,9 @@
   "name": "chartme",
   "version": "0.0.0",
   "private": true,
+  "license": "Apache License 2.0",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/chartme"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
