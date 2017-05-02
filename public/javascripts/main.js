@@ -9,10 +9,6 @@ $(() => {
         }],
     };
 
-    $.getJSON('/options').then(function(opts) {
-        data.datasets[0].label = opts.legend;
-    });
-
     const $canvas = $('#mychart');
     var graph = new Chart($canvas, {
         type: 'line',
@@ -21,6 +17,11 @@ $(() => {
             resposive: true,
             maintainAspectRatio: false,
         }
+    });
+
+    $.getJSON('/options').then(function(opts) {
+        data.datasets[0].label = opts.label;
+        graph.update();
     });
 
     var socket = io();
