@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node --harmony
 
 /**
  * Module dependencies.
@@ -7,6 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('chartme:server');
 var http = require('http');
+var options = require('commander');
+var path = require('path')
 
 /**
  * Get port from environment and store in Express.

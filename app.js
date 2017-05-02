@@ -4,11 +4,21 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var options = require('commander');
+var pJSON = require('./package.json')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+options
+    .version(pJSON.version)
+    .option('-l, --label <label>', 'Graph label')
+    .parse(process.argv);
+
+app.set('options', options);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

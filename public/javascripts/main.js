@@ -9,6 +9,10 @@ $(() => {
         }],
     };
 
+    $.getJSON('/options').then(function(opts) {
+        data.datasets[0].label = opts.legend;
+    });
+
     const $canvas = $('#mychart');
     var graph = new Chart($canvas, {
         type: 'line',

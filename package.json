@@ -6,9 +6,13 @@
   "scripts": {
     "start": "node ./bin/chartme"
   },
+  "bin": {
+    "chartme": "./bin/chartme"
+  },
   "dependencies": {
     "body-parser": "~1.17.1",
     "chart.js": "^2.5.0",
+    "commander": "^2.9.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
