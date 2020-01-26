@@ -8,7 +8,6 @@ var options = require('commander');
 var pJSON = require('./package.json')
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 
@@ -30,13 +29,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
+app.use(express.static('dist'));
 app.use('/javascripts', express.static(path.join(__dirname, '/node_modules/jquery/dist/')));
 app.use('/javascripts', express.static(path.join(__dirname, '/node_modules/chart.js/dist/')));
 app.use('/javascripts', express.static(path.join(__dirname, './node_modules/socket.io-client/dist/')));
 
 app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,17 @@
+{
+  "name": "chartme",
+  "version": "0.1.0",
+  "sources": ["src"],
+  "package-specs": {
+    "module": "es6-global",
+    "in-source": true
+  },
+  "suffix": ".js",
+  "bs-dependencies": [
+    "bs-fetch"
+  ],
+  "warnings": {
+    "error" : "+101"
+  },
+  "refmt": 3
+}
