@@ -1,14 +1,13 @@
-open Express;
-open App_bs;
+open App;
 
 type server;
-[@bs.module "http"] external createServer : app => server = "http";
+[@bs.module "http"] external createServer : app => server = "createServer";
 [@bs.send] external listen: (server, string) => unit = "listen";
 [@bs.send] external onError : (server, string, error => unit) => unit = "on";
 [@bs.send] external on : (server, string, unit => unit) => unit = "on";
 
 type socketio;
-[@bs.module "socketio"] external socketio : server => socketio = "default";
+[@bs.module] external socketio : server => socketio = "socket.io";
 
 // it cant be a path for a unix socket
 // this is why is a string

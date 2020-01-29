@@ -1,9 +1,17 @@
 {
   "name": "chartme",
   "version": "0.1.0",
-  "sources": ["src"],
+  "sources": [
+    {
+      "dir": "src/",
+      "subdirs": true
+    }, {
+      "dir": "srcserver/",
+      "subdirs": true
+    }
+  ],
   "package-specs": {
-    "module": "es6-global",
+    "module": "commonjs",
     "in-source": true
   },
   "suffix": ".js",
