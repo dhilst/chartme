@@ -24,17 +24,19 @@ app->set("port", port);
 let server = createServer(app);
 let io = socketio(server);
 
-server->listen(port);
-server->onError("error", error => raise(Failure("oh no " ++ error.code)));
-server->on("listening", () => {
-  debug("listenting on port 3000");
-  Js.log("Server started ...")
-});
-
-io->onSocket("connection", socket => {
-  processStdinOn("data", data => {
-    let data = parseInt(data);
-    Js.log(data);
-    socket->emit("newdata", data)
+let start = () => {
+  server->listen(port);
+  server->onError("error", error => raise(Failure("oh no " ++ error.code)));
+  server->on("listening", () => {
+    debug("listenting on port 3000");
+    Js.log("Server started ...")
   });
-});
+
+  io->onSocket("connection", socket => {
+    processStdinOn("data", data => {
+      let data = parseInt(data);
+      Js.log(data);
+      socket->emit("newdata", data)
+    });
+  });
+}
