@@ -93,9 +93,9 @@ function onListening() {
 }
 
 io.on('connection', function (socket){ 
-    process.stdin.on('data', function(data) {
-        var intData = parseInt(data);
-        console.log(intData);
-        socket.emit('newdata', intData);
-    });
+  process.stdin.on('data', function(data) {
+    var intData = parseInt(data);
+    console.log(intData);
+    socket.emit('newdata', intData);
+  });
 })

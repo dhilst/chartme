@@ -57,7 +57,7 @@ if (typeof match === "number") {
 
 Commander.version(packageVersion).option("-l, --label <label>", "Graph label");
 
-app.set("views", Path.join(__dirname, "views"));
+app.set("views", Path.join(__dirname, "../views"));
 
 app.set("view engine", "pug");
 
@@ -69,25 +69,26 @@ app.use(BodyParser.json({
           extended: false
         }));
 
-app.use(Curry._1(CookieParser, /* () */0));
+app.use(CookieParser());
 
-app.use(Express.static("../public"));
+app.use(Express.static(Path.join(__dirname, "./../public")));
 
-app.use(Express.static("../dist"));
+app.use(Express.static(Path.join(__dirname, "./../dist")));
 
-app.use("/javascripts", Express.static(Path.join(__dirname, "/../node_modules/jquery/dist/")));
+app.use("/javascripts", Express.static(Path.join(__dirname, "./../node_modules/jquery/dist/")));
 
-app.use("/javascripts", Express.static(Path.join(__dirname, "/node_modules/chart.js/dist/")));
+app.use("/javascripts", Express.static(Path.join(__dirname, "./../node_modules/chart.js/dist/")));
 
-app.use("/javascripts", Express.static(Path.join(__dirname, "./node_modules/socket.io-client/dist/")));
+app.use("/javascripts", Express.static(Path.join(__dirname, "./../node_modules/socket.io-client/dist/")));
 
 var router = Express.Router();
 
-router.get("/", (function (param, res, next) {
+router.get("/", (function (param, res, param$1) {
+        console.log("Iyhaaaa");
         var options = { };
         options["title"] = "Chart me!";
         res.render("index", Caml_option.some(options));
-        return Curry._1(next, undefined);
+        return /* () */0;
       }));
 
 router.get("/options", (function (param, res, next) {
@@ -99,6 +100,7 @@ router.get("/options", (function (param, res, next) {
 app.use("/", router);
 
 app.use((function (_req, _res, next) {
+        console.log("oops, something went wrong");
         var err = new Error("Not Found");
         err.status = 404;
         return Curry._1(next, err);

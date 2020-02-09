@@ -3,8 +3,15 @@
 
 var App = require("./app.js");
 var Http = require("http");
+var Debug = require("debug");
+var Process = require("process");
 var SocketIo = require("socket.io");
 var Caml_builtin_exceptions = require("bs-platform/lib/js/caml_builtin_exceptions.js");
+
+function debug(param) {
+  Debug("chartme:server", param);
+  return /* () */0;
+}
 
 var port = "3000";
 
@@ -24,10 +31,22 @@ server.on("error", (function (error) {
       }));
 
 server.on("listening", (function (param) {
+        Debug("chartme:server", "listenting on port 3000");
         console.log("Server started ...");
         return /* () */0;
       }));
 
+io.on("connection", (function (socket) {
+        Process.stdin.on("data", (function (data) {
+                var data$1 = parseInt(data);
+                console.log(data$1);
+                socket.emit("newdata", data$1);
+                return /* () */0;
+              }));
+        return /* () */0;
+      }));
+
+exports.debug = debug;
 exports.port = port;
 exports.server = server;
 exports.io = io;

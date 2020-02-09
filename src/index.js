@@ -21,10 +21,10 @@ var ElementNotFound = Caml_exceptions.create("Index.ElementNotFound");
 function windowOnLoad(param) {
   console.log("hello");
   var data = {
-    labels: /* array */[],
-    datasets: /* array */[{
+    labels: [],
+    datasets: [{
         label: "",
-        data: /* array */[]
+        data: []
       }]
   };
   var key = "#mychart";
