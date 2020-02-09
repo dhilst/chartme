@@ -9,6 +9,8 @@ websocket to the frontend wich do the live plotting.
 ```
 git clone THIS_REPO
 cd chartme
+yarn install
+yarn bsb
 yarn global add file:$PWD
 ```
 
