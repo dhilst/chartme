@@ -93,7 +93,7 @@ let windowOnLoad = () => {
            );
          }
          |> resolve
-       )
+       ) |> ignore
   );
 
   let socket = io();
