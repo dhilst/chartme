@@ -5,7 +5,7 @@
   "license": "Apache License 2.0",
   "scripts": {
     "debug": "DEBUG=express:* node ./srcserver/chartme",
-    "start": "node ./srcserver/chartme",
+    "start": "node ./bin/chartme",
     "random": "while :; do echo $RANDOM; sleep 1; done | yarn start",
     "bsb:dev": "bsb -make-world -w"
   },

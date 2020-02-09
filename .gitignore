@@ -24,3 +24,7 @@ lib/bs
 .vscode
 .merlin
 .bsb.lock
+
+src/*.js
+srcserver/*.js
+dist/*
